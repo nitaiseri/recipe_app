@@ -1,0 +1,135 @@
+body {
+	background: lightcoral;
+}
+
+#container{
+    height: 100vh;
+    width: 96vw;
+    display: grid;
+    grid-template-rows: 1fr 12fr;
+    grid-gap: 10px;
+    grid-template-areas: "header" "content";
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#search-container{
+    grid-area: header;
+    width: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 6fr 1fr 1fr 1fr 1fr;
+}
+
+#search-container > div{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    border: solid 1px;
+}
+
+#search-container > input{
+    font-weight: bold;
+}
+
+#input{
+    padding: 10px;
+}
+
+#search-btn{
+    padding: 10px;
+    font-weight: bold;
+}
+
+.dt { 
+    width: fit-content;
+    background-color: blue;
+    color: black;
+}
+
+
+
+/* Customize the label (the container) */
+.filter {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .filter input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
+
+  
+/* On mouse-over, add a grey background color */
+.filter:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .filter input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .filter input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .filter .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .recipe{
+    position: relative;
+    overflow:hidden;
+  }
+
+  #recipes-container{
+    grid-area: content;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}

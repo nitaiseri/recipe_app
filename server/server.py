@@ -16,9 +16,9 @@ app.mount("/client", StaticFiles(directory="client"), name="client")
 def sanity():
     return "OK"
 
-# @app.get('/')
-# def root():
-#     return FileResponse('./client/index.html')
+@app.get('/')
+def root():
+    return FileResponse('./client/index.html')
 
 @app.get("/recipes/{ingredient}")
 def get_recipes(ingredient, sensitivity = None):
@@ -32,12 +32,6 @@ def get_recipes(ingredient, sensitivity = None):
         if raw_recipes and raw_recipes.status_code == 404:
             raise HTTPException(status_code=raw_recipes.status_code)
         raise HTTPException(status_code=404, detail="Invalid parameters")
-
-    # except GeneralUnicException:
-    #     raise HTTPException(
-    #         status_code=status.HTTP_404_NOT_FOUND,
-    #         detail="Invalid word"
-    #     )
 
 if __name__ == "__main__":
     uvicorn.run("server:app", host="0.0.0.0", port=8000,reload=True)

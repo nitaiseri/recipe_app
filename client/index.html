@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProjectName</title>
+    <link rel="stylesheet" type="text/css" href="./client/style.css">
+</head>
+
+<body>
+    <div id="header"></div>
+    <div id="container">
+        <div id="search-container">
+            <input id="input" type="text" placeholder="Enter ingredient you have">
+            <button id="search-btn">Search</button>
+            <label class="filter">Gluten Free
+                <input id="gluten" type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+    
+            <label class="filter">Dairy Free
+                <input id="diary" type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+
+        <div id="recipes-container">
+
+        </div>
+    </div>
+
+    <!-- ========== HANDELBARS ========== -->
+    <script id="recipe-template" type="text/x-handlebars-template">
+        {{#each recipes}}
+            <div class="recipe">
+                <p>{{title}}</p>
+                <img src="{{thumbnail}}" alt="">
+                <ul id="ingredients">
+                    {{ingredients}}
+                </ul>
+                <a href="{{href}}">Video</a>
+            </div>
+        {{/each}}
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="./client/js/renderer.js"></script>
+    <script src="./client/js/model.js"></script>
+    <script src="./client/js/controler.js"></script>
+</body>
+
+</html>
