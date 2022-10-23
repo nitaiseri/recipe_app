@@ -20,23 +20,24 @@ def sanity():
 # def root():
 #     return FileResponse('./client/index.html')
 
-# @app.get("/books")
-# def get_players(word):
-#     books = requests.get(f"https://www.googleapis.com/books/v1/volumes?q={word}")
-#     try:
-#         return parse_data(books.json())
+@app.get("/recipes/{ingredient}")
+def get_recipes(ingredient, sensitivity = None):
+    raw_recipes = requests.get(f"https://recipes-goodness.herokuapp.com/recipes/{ingredient}")
+    try:
+        recipes = parse_recipes_data(raw_recipes.json()["results"])
+        if sensitivity is not None:
+            recipes = filter_by_sensitivity(recipes, sensitivity)
+        return recipes
+    except:
+        if raw_recipes and raw_recipes.status_code == 404:
+            raise HTTPException(status_code=raw_recipes.status_code)
+        raise HTTPException(status_code=404, detail="Invalid parameters")
 
-#     except GeneralUnicException:
-#         raise HTTPException(
-#             status_code=status.HTTP_404_NOT_FOUND,
-#             detail="Invalid word"
-#         )
-
-# @app.get("/books/")
-# def get_book_by_parameter(parameter):
-#     if parameter == "long":
-#         book_name = db_manager.get_longest_book()
-#         return book_name
+    # except GeneralUnicException:
+    #     raise HTTPException(
+    #         status_code=status.HTTP_404_NOT_FOUND,
+    #         detail="Invalid word"
+    #     )
 
 if __name__ == "__main__":
     uvicorn.run("server:app", host="0.0.0.0", port=8000,reload=True)

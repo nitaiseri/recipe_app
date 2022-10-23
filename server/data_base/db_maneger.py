@@ -31,21 +31,10 @@ class DB_Manager:
         self.connection.commit()
 
 
-    def get_dairy_ingredients(self):
+    def get_ingredients(self, table_name):
         with self.connection.cursor() as cursor:
-            cursor.execute(f"SELECT name FROM dairy_ingredient;")
-            return cursor.fetchall()
-
-        
-    def get_gluten_ingredients(self):
-        with self.connection.cursor() as cursor:
-            cursor.execute(f"SELECT name FROM gluten_ingredient;")
+            cursor.execute(f"SELECT name FROM {table_name};")
             return cursor.fetchall()
     
-    # def get_longest_book(self):
-    #     with self.connection.cursor() as cursor:
-    #         cursor.execute(GET_LONGEST_BOOK)
-    #         result = cursor.fetchone()["name"]
-    #         return result
 
 db_manager = DB_Manager()
