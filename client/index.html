@@ -38,7 +38,9 @@
                 <p>{{title}}</p>
                 <img src="{{thumbnail}}" alt="">
                 <ul id="ingredients">
-                    {{ingredients}}
+                    {{#each ingredients}}
+                        <li>{{this}}</li>
+                    {{/each}}
                 </ul>
                 <a href="{{href}}">Video</a>
             </div>

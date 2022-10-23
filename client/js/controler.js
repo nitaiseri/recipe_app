@@ -15,7 +15,9 @@ $('#search-btn').on('click', function () {
     })
 })
 
-$("#recipes-container").on('click', "img", function(){
+$("#recipes-container").on('click', "img", function () {
     alert($(this).closest(".recipe").find("#ingredients").text())
+    alert("I know it's not the first");
+    alert("Perdon");
 })
 

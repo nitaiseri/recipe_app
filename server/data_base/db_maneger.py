@@ -36,5 +36,4 @@ class DB_Manager:
             cursor.execute(f"SELECT name FROM {table_name};")
             return cursor.fetchall()
     
-
 db_manager = DB_Manager()

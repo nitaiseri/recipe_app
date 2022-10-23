@@ -48,7 +48,9 @@ body {
     color: black;
 }
 
-
+.recipe p{
+  font-weight: bold;
+}
 
 /* Customize the label (the container) */
 .filter {
